@@ -18,7 +18,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     public Empleado guardarEmpleado(Empleado empleadoParaGuardar) {
         Boolean empleadoExiste = empleadoRepository.existsById(empleadoParaGuardar.getEmpleadoId());
 
-        //agrega validadciones antes de guardaral empleado
+        //agrega validaciones antes de guardaral empleado
         if (!(empleadoExiste) && empleadoParaGuardar.getAniosAntiguedad() > 1){
             return empleadoRepository.save(empleadoParaGuardar);
         }else{

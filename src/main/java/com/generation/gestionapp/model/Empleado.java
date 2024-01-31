@@ -21,6 +21,10 @@ public class Empleado {
     @JoinColumn(name = "cargo_id") // Nombre de la columna que contendrá la llave foránea
     private Cargo cargoEmpleado; // Referencia a la clase Cargo
 
+    @ManyToOne
+    @JoinColumn(name = "departamento_id") // Nombre de la columna que contendrá la llave foránea
+    private Departamento departamentoEmpleado; // Referencia a la clase Cargo
+
     @Column (name = "nombreEmpleado") // permite crear
     @Size(min = 3, max = 40) // validacion para
     private String nombreEmpleado;
@@ -39,13 +43,13 @@ public class Empleado {
     @Column (name = "correoEmpleado")
     private String correoEmpleado;
 
-
     // constructor
     public Empleado() {
     }
 
-    public Empleado(Cargo cargoEmpleado, String nombreEmpleado, String direccionEmpleado, Integer aniosAntiguedad, String correoEmpleado) {
+    public Empleado(Cargo cargoEmpleado, Departamento departamentoEmpleado, String nombreEmpleado, String direccionEmpleado, Integer aniosAntiguedad, String correoEmpleado) {
         this.cargoEmpleado = cargoEmpleado;
+        this.departamentoEmpleado = departamentoEmpleado;
         this.nombreEmpleado = nombreEmpleado;
         this.direccionEmpleado = direccionEmpleado;
         this.aniosAntiguedad = aniosAntiguedad;
@@ -61,8 +65,16 @@ public class Empleado {
         return cargoEmpleado;
     }
 
+    public Departamento getDepartamentoEmpleado() {
+        return departamentoEmpleado;
+    }
+
     public void setCargoEmpleado(Cargo cargoEmpleado) {
         this.cargoEmpleado = cargoEmpleado;
+    }
+
+    public void setDepartamentoEmpleado(Departamento departamentoEmpleado) {
+        this.departamentoEmpleado = departamentoEmpleado;
     }
 
     public String getNombreEmpleado() {
